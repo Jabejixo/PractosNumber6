@@ -212,7 +212,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
                     try
                     {
-                        serverSocket.ConnectAsync(hostname, 8888);
+                        await serverSocket.ConnectAsync(hostname, 18888);
                         isConnected = new CancellationTokenSource();
                         ReceiveMessages(isConnected);
                         SendMessage(ClientName, "/connect", MessageType.ToServer);
@@ -264,7 +264,6 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private void OpenMainMenu()
         {
             SendMessage(ClientName, "/disconnect");
-            new MainWindow().Show();
             Window.Close();
         }
 

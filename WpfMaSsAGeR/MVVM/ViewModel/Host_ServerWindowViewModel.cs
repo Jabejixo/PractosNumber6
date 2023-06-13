@@ -24,7 +24,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
             set
             {
                 logs = value;
-                Set(ref logs, value);
+                Set(ref logs, value, "Logs");
             }
         }
 
@@ -33,7 +33,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
         public Host_ServerWindowViewModel()
         {
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, 8888);
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, 18888);
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(ipPoint);
             socket.Listen(1000);
@@ -187,6 +187,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
             }
         }
 
+        private bool a = false;
 
         private RelayCommand commandSave;
         public RelayCommand CommandSave
@@ -194,8 +195,9 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
             get
             {
                 return commandSave ??= new RelayCommand(obj =>
-                { 
-                    JsonManager.Serialize(Logs, "Logs");
+                {
+                    if (a) JsonManager.Serialize(Logs, "Logs");
+                    a = true;
                 });
             }
         }
@@ -207,9 +209,12 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
             {
                 return commandLoad ??= new RelayCommand(obj =>
                 {
-                    JsonManager.Serialize(Logs, "Logs");
-                    Logs = new ObservableCollection<string>();
-                    Logs = JsonManager.Deserialization<string>("Logs");
+                    Logs.Clear();
+                    var a = JsonManager.Deserialization<string>("Logs");
+                    foreach (var VARIABLE in a)
+                    {
+                        Logs.Add(VARIABLE);
+                    }
                 });
             }
         }

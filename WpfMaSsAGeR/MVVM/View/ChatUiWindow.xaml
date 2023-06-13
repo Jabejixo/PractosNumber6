@@ -35,7 +35,7 @@
             <Button Background="#FF2F2E2E" x:Name="ConnectBtn" Width="300" Height="30" Margin="0 0 10 0" Cursor="Hand" 
                     Content="{Binding ConnectionInfo}" Command="{Binding CommandOpenConnectServerDialog}" 
                     FontFamily="Malgun Gothic Semilight"/>
-            <Button Foreground="MediumPurple" Background="#FF2F2E2E" x:Name="exitBtn" Width="100" Height="30" 
+            <Button Foreground="MediumPurple" Background="#FF2F2E2E" x:Name="exitBtn" IsCancel="True" Width="100" Height="30" 
                     Command="{Binding CommandOpenMainMenu}"
                     Cursor="Hand" FontFamily="Malgun Gothic Semilight" 
                     Content="Exit"/>
@@ -72,7 +72,7 @@
                  FontSize="13" Grid.Row="2" 
                  Grid.Column="1"  Text="{Binding MessageText, Mode=TwoWay}"/>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 40 0"  Grid.Row="2" Grid.Column="1">
-            <Button Foreground="MediumPurple" Background="#FF2F2E2E" x:Name="sendMessage" Content=">>"  Height="30" Width="43" Command="{Binding CommandSendMessage}" Cursor="Hand"
+            <Button Foreground="MediumPurple" Background="#FF2F2E2E" IsDefault="True" x:Name="sendMessage" Content=">>"  Height="30" Width="43" Command="{Binding CommandSendMessage}" Cursor="Hand"
                     Margin="11">
             </Button>
         </StackPanel>
