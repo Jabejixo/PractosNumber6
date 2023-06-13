@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfMaSsAGeR", "WpfMaSsAGeR\WpfMaSsAGeR.csproj", "{21B9F9E3-FC07-4AAC-97EE-E50CA98790B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonLib", "JsonLib\JsonLib.csproj", "{7B8E2F0A-F851-4507-9EDF-B6DA3CA5518D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converters", "Converters\Converters.csproj", "{DBC9D31D-AC82-4CFC-8C3B-9F49C49B489D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21B9F9E3-FC07-4AAC-97EE-E50CA98790B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B9F9E3-FC07-4AAC-97EE-E50CA98790B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B9F9E3-FC07-4AAC-97EE-E50CA98790B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B9F9E3-FC07-4AAC-97EE-E50CA98790B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8E2F0A-F851-4507-9EDF-B6DA3CA5518D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8E2F0A-F851-4507-9EDF-B6DA3CA5518D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8E2F0A-F851-4507-9EDF-B6DA3CA5518D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8E2F0A-F851-4507-9EDF-B6DA3CA5518D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBC9D31D-AC82-4CFC-8C3B-9F49C49B489D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBC9D31D-AC82-4CFC-8C3B-9F49C49B489D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBC9D31D-AC82-4CFC-8C3B-9F49C49B489D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBC9D31D-AC82-4CFC-8C3B-9F49C49B489D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36C494DE-29A6-452E-BE21-DE8033C84B75}
+	EndGlobalSection
+EndGlobal
