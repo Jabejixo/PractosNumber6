@@ -14,14 +14,10 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
         protected void Set<T>(ref T field, T value, [CallerMemberName] string propName = "")
         {
-            if (field != null)
-            {
-                if (!field.Equals(value))
-                {
-                    field = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-                }
-            }
+            if (field == null) return;
+            if (field.Equals(value)) return;
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
     }

@@ -192,22 +192,19 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private RelayCommand commandSave;
         public RelayCommand CommandSave
         {
-            get
-            {
-                return commandSave ??= new RelayCommand(obj =>
+            get =>
+                commandSave ??= new RelayCommand(obj =>
                 {
                     if (a) JsonManager.Serialize(Logs, "Logs");
                     a = true;
                 });
-            }
         }
 
         private RelayCommand commandLoad;
         public RelayCommand CommandLoad
         {
-            get
-            {
-                return commandLoad ??= new RelayCommand(obj =>
+            get =>
+                commandLoad ??= new RelayCommand(obj =>
                 {
                     Logs.Clear();
                     var a = JsonManager.Deserialization<string>("Logs");
@@ -216,7 +213,6 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                         Logs.Add(VARIABLE);
                     }
                 });
-            }
         }
 
 

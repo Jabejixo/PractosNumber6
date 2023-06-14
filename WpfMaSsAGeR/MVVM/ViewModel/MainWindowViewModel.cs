@@ -28,13 +28,11 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private RelayCommand commandOpenHost;
         public RelayCommand CommandOpenHost
         {
-            get
-            {
-                return commandOpenHost ??= new RelayCommand(obj =>
+            get =>
+                commandOpenHost ??= new RelayCommand(obj =>
                 {
                     OpenHost();
                 });
-            }
         }
 
 

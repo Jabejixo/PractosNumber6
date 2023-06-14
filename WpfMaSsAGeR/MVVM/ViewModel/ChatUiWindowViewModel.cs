@@ -103,13 +103,11 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private RelayCommand commandOpenConnectServerDialog;
         public RelayCommand CommandOpenConnectServerDialog
         {
-            get
-            {
-                return commandOpenConnectServerDialog ??= new RelayCommand(obj =>
+            get =>
+                commandOpenConnectServerDialog ??= new RelayCommand(obj =>
                 {
                     OpenConnectDialog();
                 });
-            }
         }
 
 
@@ -117,13 +115,11 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private RelayCommand commandSendMessage;
         public RelayCommand CommandSendMessage
         {
-            get
-            {
-                return commandSendMessage ??= new RelayCommand(obj =>
+            get =>
+                commandSendMessage ??= new RelayCommand(obj =>
                 {
                     SendMessage(ClientName, MessageText);
                 });
-            }
         }
 
 
@@ -131,13 +127,11 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private RelayCommand commandOpenMainMenu;
         public RelayCommand CommandOpenMainMenu
         {
-            get
-            {
-                return commandOpenMainMenu ??= new RelayCommand(obj =>
+            get =>
+                commandOpenMainMenu ??= new RelayCommand(obj =>
                 {
                     OpenMainMenu();
                 });
-            }
         }
 
 

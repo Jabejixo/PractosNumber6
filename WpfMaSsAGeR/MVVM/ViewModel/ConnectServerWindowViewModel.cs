@@ -28,13 +28,11 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
         private RelayCommand commandConnect;
         public RelayCommand CommandConnect
         {
-            get
-            {
-                return commandConnect ??= new RelayCommand(obj =>
+            get =>
+                commandConnect ??= new RelayCommand(obj =>
                 {
                     ConnectServer();
                 });
-            }
         }
 
         private void ConnectServer()
