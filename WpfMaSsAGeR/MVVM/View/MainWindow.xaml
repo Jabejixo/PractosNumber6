@@ -13,24 +13,27 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="217*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="173*"/>
         </Grid.RowDefinitions>
 
-        <ui:TextBox x:Name="UserNameTxb"  VerticalAlignment="Bottom" Margin="80,0"
-                     Text="{Binding ClientName}"   FontSize="13" 
+        <ui:TextBox x:Name="UserNameTxb"  VerticalAlignment="Top" Margin="80,164,80,0"
+                     Text="{Binding ClientName}"   FontSize="13" Height="33" 
         />
-
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1">
-            <ui:Button Width="100" Height="30" Margin="0 0 10 0" Content="Host" Command="{Binding CommandOpenHost}">
-            </ui:Button>
-            <ui:Button Width="100" Height="30"  Command="{Binding CommandOpenUser}" Content="User">
-                <Button.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MyMultiConverter}">
-                        <Binding ElementName="UserNameTxb" Path="Text"/>
-                    </MultiBinding>
-                </Button.IsEnabled>
-            </ui:Button>
-        </StackPanel>
+        <Grid Margin="0,217,0,0" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+        <ui:Button Grid.Column="0" HorizontalAlignment="Stretch" Content="Сервер" Command="{Binding CommandOpenHost}" Margin="80,0,10,0"/>
+            <ui:Button Grid.Column="1" HorizontalAlignment="Stretch" Command="{Binding CommandOpenUser}" Content="Пользователь" Margin="10,0,80,0" >
+            <Button.IsEnabled>
+                <MultiBinding Converter="{StaticResource MyMultiConverter}">
+                    <Binding ElementName="UserNameTxb" Path="Text"/>
+                </MultiBinding>
+            </Button.IsEnabled>
+        </ui:Button>
+        </Grid>
     </Grid>
 </ui:UiWindow>

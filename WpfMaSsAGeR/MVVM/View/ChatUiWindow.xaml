@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfMaSsAGeR.MVVM.View"
+
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:viewModel="clr-namespace:WpfMaSsAGeR.MVVM.ViewModel"
         mc:Ignorable="d"
@@ -30,16 +30,20 @@
             </ListView>
         </Border>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0 20 0 0" 
-                    VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Button Background="#FF2F2E2E" x:Name="ConnectBtn" Width="300" Height="30" Margin="0 0 10 0" Cursor="Hand" 
+        <Grid Grid.Column="1" Margin="0, 20, 0, 0" 
+                    VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Background="#FF2F2E2E" x:Name="ConnectBtn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Cursor="Hand" Margin="10,1,0,1" 
                     Content="{Binding ConnectionInfo}" Command="{Binding CommandOpenConnectServerDialog}" 
-                    FontFamily="Malgun Gothic Semilight"/>
-            <Button Foreground="MediumPurple" Background="#FF2F2E2E" x:Name="exitBtn" IsCancel="True" Width="100" Height="30" 
+                    FontFamily="Comic sans"/>
+            <Button Foreground="MediumPurple" Background="#FF2F2E2E" Grid.Column="1" HorizontalAlignment="Stretch" x:Name="exitBtn" IsCancel="True" Margin="5,1,10,1" 
                     Command="{Binding CommandOpenMainMenu}"
-                    Cursor="Hand" FontFamily="Malgun Gothic Semilight" 
+                    Cursor="Hand" FontFamily="Comic sans" 
                     Content="Exit"/>
-        </StackPanel>
+        </Grid>
 
         <Border Grid.Column="1" Background="#FF2F2E2E" VerticalAlignment="Stretch"  Margin="10" CornerRadius="4" BorderThickness="1" 
                 BorderBrush="White"  HorizontalAlignment="Stretch" Grid.Row="1">
@@ -55,7 +59,7 @@
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsOwn}" Value="True">
+                                            <DataTrigger Binding="{Binding ItYou}" Value="True">
                                                 <Setter Property="FontWeight" Value="Bold"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -68,12 +72,12 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Border>
-        <TextBox Background="#FF2F2E2E" x:Name="textBox" VerticalAlignment="Center" Margin="50,0" 
+        <TextBox Background="#FF2F2E2E" x:Name="textBox" Margin="10,0,10,0" 
                  FontSize="13" Grid.Row="2" 
-                 Grid.Column="1"  Text="{Binding MessageText, Mode=TwoWay}"/>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 40 0"  Grid.Row="2" Grid.Column="1">
-            <Button Foreground="MediumPurple" Background="#FF2F2E2E" IsDefault="True" x:Name="sendMessage" Content=">>"  Height="30" Width="43" Command="{Binding CommandSendMessage}" Cursor="Hand"
-                    Margin="11">
+                 Grid.Column="0" Grid.ColumnSpan="2"  Text="{Binding MessageText, Mode=TwoWay}"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 12 0"  Grid.Row="2" Grid.Column="1">
+            <Button BorderBrush="{x:Null}" Foreground="MediumPurple" Background="#FF2F2E2E" IsDefault="True" x:Name="sendMessage" Content=">>"  Height="30" Width="43" Command="{Binding CommandSendMessage}" Cursor="Hand"
+                    Margin="0,0,0,0">
             </Button>
         </StackPanel>
     </Grid>

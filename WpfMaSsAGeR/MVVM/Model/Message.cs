@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace WpfMaSsAGeR.MVVM.Model
 {
-    public class Message
-    {
-        public string ClientName { get; set; }
-        public string MessageText { get; set; }
-        public bool IsOwn { get; set; }
-        public MessageType Type { get; set; }
-    }
-
-    public enum MessageType
+    public enum TypeMessage
     {
         ToServer,
         Text,
         Error,
         Info
     }
+    public class Message
+    {
+        public string ClientName { get; set; }
+        public string MessageText { get; set; }
+        public bool ItYou { get; set; }
+        public TypeMessage Type { get; set; }
+    }
+
+    
 }
 

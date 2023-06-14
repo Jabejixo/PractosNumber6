@@ -33,7 +33,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
         public Host_ServerWindowViewModel()
         {
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Any, 18888);
+            var ipPoint = new IPEndPoint(IPAddress.Any, 18888);
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(ipPoint);
             socket.Listen(1000);
@@ -64,7 +64,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                 {
                     switch (message.Type)
                     {
-                        case MessageType.ToServer when message.MessageText == "/connect":
+                        case TypeMessage.ToServer when message.MessageText == "/connect":
                         {
                             if (!ValidateClientName(message.ClientName))
                             {
@@ -76,7 +76,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                                     {
                                         ClientName = "Server",
                                         MessageText = "Ошибка! Вы не можете называться 'Server'.",
-                                        Type = MessageType.Error
+                                        Type = TypeMessage.Error
                                     };
                                 }
                                 else
@@ -86,7 +86,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                                         ClientName = "Server",
                                         MessageText =
                                             "Ошибка! Пользователь с тем же именем пользователя уже подключен.",
-                                        Type = MessageType.Error
+                                        Type = TypeMessage.Error
                                     };
                                 }
 
@@ -107,14 +107,14 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                                             {
                                                 ClientName = "Server",
                                                 MessageText = JsonManager.ConvertCollectionToJson(clientsNames),
-                                                Type = MessageType.Info
+                                                Type = TypeMessage.Info
                                             });
                                         SendMessage(item,
                                             new Message()
                                             {
                                                 ClientName = "Server",
                                                 MessageText = $"{message.ClientName} присоединился.",
-                                                Type = MessageType.Text
+                                                Type = TypeMessage.Text
                                             });
                                     }
                                     else
@@ -124,7 +124,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                                             {
                                                 ClientName = "Server",
                                                 MessageText = JsonManager.ConvertCollectionToJson(clientsNames),
-                                                Type = MessageType.Info
+                                                Type = TypeMessage.Info
                                             });
                                     }
                                 }
@@ -132,7 +132,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
                             break;
                         }
-                        case MessageType.ToServer:
+                        case TypeMessage.ToServer:
                         {
                             if (message.MessageText == "/disconnect")
                             {
@@ -145,14 +145,14 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                                         {
                                             ClientName = "Server",
                                             MessageText = JsonManager.ConvertCollectionToJson(clientsNames),
-                                            Type = MessageType.Info
+                                            Type = TypeMessage.Info
                                         });
                                     SendMessage(item,
                                         new Message()
                                         {
                                             ClientName = "Server",
                                             MessageText = $"{message.ClientName} отключился.",
-                                            Type = MessageType.Text
+                                            Type = TypeMessage.Text
                                         });
                                 }
 
@@ -162,7 +162,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
                             break;
                         }
-                        case MessageType.Text:
+                        case TypeMessage.Text:
                         {
                             Logs.Add(
                                 $"[{DateTime.Now}] Received {message.Type} Сообщение от {message.ClientName}: {message.MessageText}");
@@ -173,9 +173,9 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
                             break;
                         }
-                        case MessageType.Error:
+                        case TypeMessage.Error:
                             break;
-                        case MessageType.Info:
+                        case TypeMessage.Info:
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

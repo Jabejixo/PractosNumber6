@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Logs}" Grid.RowSpan="2">
+        <ListView ItemsSource="{Binding Logs}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" />

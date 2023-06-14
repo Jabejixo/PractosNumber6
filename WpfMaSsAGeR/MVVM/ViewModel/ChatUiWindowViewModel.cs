@@ -162,7 +162,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                 if (message == null) continue;
                 switch (message.Type)
                 {
-                    case MessageType.Info:
+                    case TypeMessage.Info:
                     {
                         ConnectionInfo = "Подключен к " + hostname;
                         ClientNames.Clear();
@@ -173,14 +173,14 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
 
                         break;
                     }
-                    case MessageType.Error:
+                    case TypeMessage.Error:
                         System.Windows.MessageBox.Show(message.MessageText);
                         break;
-                    case MessageType.Text:
+                    case TypeMessage.Text:
                         message.ClientName = message.ClientName + " " + DateTime.Now;
                         Messages.Add(message);
                         break;
-                    case MessageType.ToServer:
+                    case TypeMessage.ToServer:
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -215,7 +215,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                         await serverSocket.ConnectAsync(hostname, 18888);
                         isConnected = new CancellationTokenSource();
                         ReceiveMessages(isConnected);
-                        SendMessage(ClientName, "/connect", MessageType.ToServer);
+                        SendMessage(ClientName, "/connect", TypeMessage.ToServer);
 
                     }
                     catch (Exception)
@@ -232,7 +232,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
             }
         }
 
-        private async Task SendMessage(string clientName, string text, MessageType messageType = MessageType.Text)
+        private async Task SendMessage(string clientName, string text, TypeMessage typeMessage = TypeMessage.Text)
         {
             var message = new Message() { ClientName = clientName, MessageText = text };
 
@@ -240,7 +240,7 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
             {
                 if (text == "/disconnect")
                 {
-                    message.Type = MessageType.ToServer;
+                    message.Type = TypeMessage.ToServer;
                     isConnected.Cancel();
                     Messages.Clear();
                     ClientNames.Clear();
@@ -248,13 +248,13 @@ namespace WpfMaSsAGeR.MVVM.ViewModel
                 else
                 {
                     Messages.Add(new Message()
-                        { ClientName = "Вы " + DateTime.Now, IsOwn = true, MessageText = message.MessageText });
-                    message.Type = messageType;
+                        { ClientName = "Вы " + DateTime.Now, ItYou = true, MessageText = message.MessageText });
+                    message.Type = typeMessage;
                 }
             }
             else
             {
-                message.Type = messageType;
+                message.Type = typeMessage;
             }
 
             byte[] bytes = Encoding.UTF8.GetBytes(JsonManager.ConvertToJson(message));
